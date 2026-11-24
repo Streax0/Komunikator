@@ -1,3 +1,9 @@
+<?php
+include 'db/db.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -11,7 +17,6 @@
     <main class="login-page">
         <section class="login-card" aria-labelledby="login-title">
             <div class="login-brand" aria-label="Message">
-                <span class="brand-mark" aria-hidden="true">M</span>
                 <span>Message</span>
             </div>
 
