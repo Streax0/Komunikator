@@ -100,6 +100,15 @@ nav ol li input[type="text"] {
   transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
+
+
+nav ol li input[type="text"] {
+  border: 1px solid #212325;
+  outline: none;
+  color: #17223b;
+}
+
+
 nav ol li input[type="text"]:focus {
   width: clamp(220px, 25vw, 450px);
   outline: none;
@@ -107,7 +116,7 @@ nav ol li input[type="text"]:focus {
   transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
-section#left {
+#left {
   width: min(28%, 300px);
   height: calc(100vh - 113px);
   background-color: #2d69ebe3;
