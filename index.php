@@ -53,7 +53,6 @@ if (!isset($_SESSION['user_id'])) {
     </section>
     <footer>
         <p>BACAITA - twój komuniaktor</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi tempore tenetur praesentium a, facilis culpa quae quaerat accusamus iusto officiis est cupiditate similique ex numquam iste ducimus aut dolore voluptas.</p>
         <a href="indexgwint.php" target="_blank" class="gwint">content</a>
     </footer>
 </body>
