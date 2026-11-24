@@ -4,6 +4,10 @@ include 'db/db.php';
 $successMessage = "";
 $errorMessage = "";
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? "");
     $name = trim($_POST["name"] ?? "");
@@ -28,16 +32,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
             $stmt->execute();
-            $successMessage = "Zarejestrowano użytkownika: " . htmlspecialchars($email, ENT_QUOTES, "UTF-8");
+            $stmt->close();
+
+            $_SESSION["successMessage"] = "Zarejestrowano użytkownika: " . $email;
+            header("Location: logowanie.php");
+            exit();
         } catch (mysqli_sql_exception $exception) {
+            $stmt->close();
             if ($exception->getCode() === 1062) {
                 $errorMessage = "Ten adres e-mail jest już zarejestrowany.";
             } else {
                 $errorMessage = "Nie udało się zarejestrować użytkownika.";
             }
         }
-
-        $stmt->close();
     }
 }
 ?>
