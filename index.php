@@ -37,7 +37,7 @@
         
     </section>
     <footer>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi tempore tenetur praesentium a, facilis culpa quae quaerat accusamus iusto officiis est cupiditate similique ex numquam iste ducimus aut dolore voluptas.</p>
+        <p>Contact our support at <a href="https://cssetti.pl/dowload" target="_blank">support.baskamessage.com</a></p>
         <a href="indexgwint.php" target="_blank" class="gwint">content</a>
     </footer>
 </body>
