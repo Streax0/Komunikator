@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zarejestruj się w komunikatorze Message">
     <title>Message | Rejestracja</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/register.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <main class="login-page">
