@@ -1,0 +1,13 @@
+.gwint:hover {
+    background-color: rgb(25, 95, 112);
+    text-shadow: 1px 1px 1px black;
+}
+
+.gwint {
+    text-decoration: none;
+    opacity: 0;
+}
+
+footer {
+    background-color: rgb(42, 121, 173);
+}

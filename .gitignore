@@ -1,0 +1,11 @@
+.vscode/
+.idea/
+
+*.log
+*.tmp
+
+.env
+.env.*
+
+xampp-folder.conf
+uruchom-xampp.bat
