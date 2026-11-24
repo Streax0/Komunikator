@@ -76,10 +76,7 @@ if ($_POST) {
                         autocomplete="current-password" placeholder="Wpisz swoje hasło" required>
                 </div>
 
-                <label class="remember">
-                    <input type="checkbox" name="remember">
-                    <span>Zapamiętaj mnie</span>
-                </label>
+
 
                 <button type="submit">Zaloguj się</button>
             </form>
