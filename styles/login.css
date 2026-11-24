@@ -191,15 +191,19 @@ input[type="checkbox"]:focus-visible {
 }
 
 .intro-icon {
-    display: grid;
-    width: 52px;
-    height: 52px;
-    margin-bottom: 48px;
-    place-items: center;
-    border: 1px solid rgb(255 255 255 / 28%);
-    border-radius: 16px;
-    color: #bfdbfe;
-    font-size: 1.35rem;
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    width: min(78%, 620px);
+    aspect-ratio: 1;
+    background-image: url("../logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.24;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .login-intro .eyebrow {
@@ -262,4 +266,89 @@ input[type="checkbox"]:focus-visible {
     .login-intro {
         display: none;
     }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+    .login-page {
+        grid-template-columns: minmax(320px, 0.95fr) minmax(340px, 1.05fr);
+    }
+
+    .login-card {
+        width: calc(100% - 48px);
+        padding: 40px 0;
+    }
+
+    .login-heading {
+        margin: 40px 0 28px;
+    }
+
+    .login-intro {
+        padding: 8%;
+    }
+
+    .login-intro h2 {
+        font-size: clamp(2.2rem, 6vw, 3.6rem);
+    }
+
+    .intro-icon {
+        width: min(78%, 480px);
+        top: 52%;
+        left: 50%;
+    }
+}
+
+@media (max-height: 700px) and (min-width: 761px) {
+    .login-card {
+        padding: 24px 0;
+    }
+
+    .login-heading {
+        margin: 28px 0 20px;
+    }
+
+    form {
+        gap: 14px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    button {
+        min-height: 46px;
+    }
+
+    .register-prompt {
+        margin-top: 18px;
+    }
+}
+
+.login-brand-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+#login-brand-image {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+#login-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: #2563eb;
+}
+
+#login-brand:hover {
+    text-decoration: underline;
+}
+
+#login-brand:focus-visible {
+    outline: 3px solid rgb(37 99 235 / 35%);
+    outline-offset: 3px;
 }

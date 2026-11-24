@@ -43,12 +43,14 @@ if ($_POST) {
     <meta name="description" content="Zaloguj się do komunikatora Message">
     <title>Message | Logowanie</title>
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
     <main class="login-page">
         <section class="login-card" aria-labelledby="login-title">
-            <div class="login-brand" aria-label="Message">
-                <span>Message</span>
+            <div class="login-brand-div" aria-label="Message">
+                <img id="login-brand-image" src="logo.png" alt="Logo komunikatora Message">
+                <span id="login-brand">Message</span>
             </div>
 
             <div class="login-heading">
@@ -86,11 +88,11 @@ if ($_POST) {
 
         <aside class="login-intro" aria-label="Informacje o komunikatorze">
             <div class="intro-content">
-                <span class="intro-icon" aria-hidden="true">✦</span>
                 <p class="eyebrow">Twój komunikator</p>
                 <h2>Rozmawiaj.<br><strong>Dziel się.</strong><br>Bądź blisko.</h2>
                 <p>Wszystkie ważne rozmowy w jednym, bezpiecznym miejscu.</p>
             </div>
+            <div class="intro-icon" aria-hidden="true"></div>
             <span class="intro-decoration decoration-one" aria-hidden="true"></span>
             <span class="intro-decoration decoration-two" aria-hidden="true"></span>
         </aside>
