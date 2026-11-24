@@ -1,6 +1,6 @@
 # Baśka Message
 
-**Komunikator Message** to lekka aplikacja webowa stworzona w PHP i MariaDB/MySQL. Projekt zawiera ekran logowania i rejestracji oraz podstawowy interfejs aplikacji po zalogowaniu.
+**Baska Message** to lekka aplikacja webowa stworzona w PHP i MariaDB/MySQL. Projekt zawiera ekran logowania i rejestracji oraz podstawowy interfejs aplikacji po zalogowaniu.
 
 ![Logo aplikacji](logo.png)
 
