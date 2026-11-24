@@ -112,16 +112,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
 
-                <label class="remember">
-                    <input type="checkbox" name="remember">
-                    <span>Zapamiętaj mnie</span>
-                </label>
+
 
 
                 <button type="submit">Zarejestruj się</button>
             </form>
 
-            <p class="register-prompt">Nie masz jeszcze konta? <a href="#">Zarejestruj się</a></p>
+            <p class="register-prompt">Nie masz jeszcze konta? <a href="logowanie.php">Zaloguj się</a></p>
         </section>
 
         <aside class="login-intro" aria-label="Informacje o komunikatorze">
