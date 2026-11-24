@@ -1,6 +1,45 @@
 <?php
 include 'db/db.php';
 
+$successMessage = "";
+$errorMessage = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = trim($_POST["email"] ?? "");
+    $name = trim($_POST["name"] ?? "");
+    $surname = trim($_POST["surname"] ?? "");
+    $password = $_POST["password"] ?? "";
+    $password2 = $_POST["password2"] ?? "";
+
+    if ($email === "" || $name === "" || $surname === "") {
+        $errorMessage = "Wypełnij wszystkie pola.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errorMessage = "Podaj prawidłowy adres e-mail.";
+    } elseif (strlen($password) < 8) {
+        $errorMessage = "Hasło musi mieć co najmniej 8 znaków.";
+    } elseif (!hash_equals($password, $password2)) {
+        $errorMessage = "Hasła nie są zgodne.";
+    } else {
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare(
+            "INSERT INTO uzytkownicy (email, imie, nazwisko, haslo_hash) VALUES (?, ?, ?, ?)"
+        );
+        $stmt->bind_param("ssss", $email, $name, $surname, $passwordHash);
+
+        try {
+            $stmt->execute();
+            $successMessage = "Zarejestrowano użytkownika: " . htmlspecialchars($email, ENT_QUOTES, "UTF-8");
+        } catch (mysqli_sql_exception $exception) {
+            if ($exception->getCode() === 1062) {
+                $errorMessage = "Ten adres e-mail jest już zarejestrowany.";
+            } else {
+                $errorMessage = "Nie udało się zarejestrować użytkownika.";
+            }
+        }
+
+        $stmt->close();
+    }
+}
 ?>
 
 
@@ -24,6 +63,12 @@ include 'db/db.php';
                 <p class="eyebrow">Rejestracja</p>
                 <h1 id="login-title">Zarejestruj się</h1>
                 <p class="subtitle">Dołącz do rozmowy i bądź w kontakcie.</p>
+                <?php if ($successMessage !== ""): ?>
+                    <p class="subtitle"><?= $successMessage ?></p>
+                <?php endif; ?>
+                <?php if ($errorMessage !== ""): ?>
+                    <p class="subtitle"><?= htmlspecialchars($errorMessage, ENT_QUOTES, "UTF-8") ?></p>
+                <?php endif; ?>
             </div>
 
             <form action="" method="post">
@@ -53,9 +98,9 @@ include 'db/db.php';
                 </div>
                 <div class="form-field">
                     <div class="field-label-row">
-                        <label for="password">Powtórz hasło</label>
+                        <label for="password2">Powtórz hasło</label>
                     </div>
-                    <input type="password" id="password" name="password"
+                    <input type="password" id="password2" name="password2"
                         autocomplete="current-password" placeholder="Powtórz swoje hasło" required>
                 </div>
 
