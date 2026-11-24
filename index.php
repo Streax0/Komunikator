@@ -39,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="settings.php">&#9881</a>
             </li>
             <li class="right">
-                <input type="text" placeholder="Wyszukaj czat">
+                <input type="text" placeholder="⌕ Wyszukaj czat">
             </li>
         </ol>
     </nav>
