@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="logo" style="background-image: url('logo.png');"><img src="logo.png" alt=""></div>
         <ol>
             <li class="active">
-                <a href="#">ex1 </a>
+                <a href="index.php">Strona Głowna </a>
             </li>
             <li class="active">
                 <a href="#">ex2 </a>
