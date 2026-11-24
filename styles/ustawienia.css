@@ -116,7 +116,7 @@ nav ol li input[type="text"]:focus {
 
 #left {
   width: min(28%, 300px);
-  height: calc(100vh - 113px);
+  height: calc(100vh - 80px);
   background-color: #2d69ebe3;
   float: left;
   overflow-y: auto;
@@ -124,7 +124,7 @@ nav ol li input[type="text"]:focus {
 
 main {
   width: calc(100% - min(28%, 300px));
-  height: calc(100vh - 113px);
+  height: calc(100vh - 80px);
   background-color: #eef4ff;
   float: left;
 }
