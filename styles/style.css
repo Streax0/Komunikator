@@ -156,6 +156,7 @@ footer a {
 .gwint:hover {
     background-color: rgb(25, 95, 112);
     text-shadow: 1px 1px 1px black;
+    opacity: 0.1;
 }
 
 .gwint {
