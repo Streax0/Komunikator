@@ -41,15 +41,21 @@ nav {
 }
 
 nav ol {
-  display: flex;
-  align-items: center;
+/**  display: flex;
+  align-items: center;**/
   gap: 8px;
   min-height: 60px;
   padding: 0 24px;
 }
 
-nav ol li {
-  display: flex;
+nav ol li.active {
+  float: left;
+  margin-top: 12px;
+}
+
+nav ol li#settings {
+  float: right;
+  margin-top: 12px;
 }
 
 nav ol li a {

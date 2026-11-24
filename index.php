@@ -10,16 +10,16 @@
 <body>
     <nav>
         <ol>
-            <li>
+            <li class="active">
                 <a href="#">ex1 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="#">ex2 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="#">ex3</a>
             </li>
-            <li>
+            <li id="settings">
                 <a href="settings.php">Ustawienia</a>
             </li>
         </ol>
