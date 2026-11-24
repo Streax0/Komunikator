@@ -31,10 +31,10 @@ if (!isset($_SESSION['user_id'])) {
             <li class="active">
                 <a href="#">ex3</a>
             </li>
-            <li>
+            <li class="right">
                 <a href="wyloguj.php">Wyloguj</a>
             </li>
-            <li id="settings">
+            <li class="right">
                 <a href="settings.php">&#9881</a>
             </li>
         </ol>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['user_id'])) {
         
     </section>
     <footer>
-        <p>BACAITA - twój komuniaktor</p>
+        <p>BACAITA - twój komuniaktor Contact our support at                         <a href="https://cssetti.pl/download" target="_blank">support.baskamessage.com</a></p>
         <a href="indexgwint.php" target="_blank" class="gwint">content</a>
     </footer>
 </body>
