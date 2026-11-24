@@ -37,18 +37,6 @@ body {
     letter-spacing: -0.02em;
 }
 
-.brand-mark {
-    display: grid;
-    width: 36px;
-    height: 36px;
-    place-items: center;
-    border-radius: 12px;
-    color: #fff;
-    background: #2563eb;
-    box-shadow: 0 8px 18px rgb(37 99 235 / 25%);
-    font-size: 1.1rem;
-}
-
 .login-heading {
     margin: 56px 0 32px;
 }
