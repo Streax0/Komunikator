@@ -21,6 +21,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <nav>
+        <div class="logo" style="background-image: url('logo.png');"><img src="logo.png" alt=""></div>
         <ol>
             <li class="active">
                 <a href="#">ex1 </a>
@@ -37,11 +38,11 @@ if (!isset($_SESSION['user_id'])) {
             <li class="right">
                 <a href="settings.php">&#9881</a>
             </li>
+            <li class="right">
+                <input type="text" placeholder="Wyszukaj czat">
+            </li>
         </ol>
     </nav>
-    <header>
-        <input type="text" placeholder="Wyszukaj czat">
-    </header>
     <section id="left">
 
     </section>

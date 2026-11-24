@@ -48,6 +48,16 @@ nav ol {
   padding: 0 24px;
 }
 
+nav div.logo img{
+  float: left;
+  margin-top: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  z-index: 100;
+}
+
 nav ol li.active {
   float: left;
   margin-top: 12px;
@@ -77,23 +87,20 @@ nav ol li a:focus-visible {
   outline-offset: 2px;
 }
 
-header {
-  background-color: rgb(42, 121, 173);
-  padding: 16px;
-  max-height: 60px;
-}
-
-header input[type="text"] {
-  width: 25%;
+nav ol li input[type="text"] {
+  margin-top : 4px;
+  width: 200px;
   padding: 8px;
   border: none;
   border-radius: 20px;
   background-color: #eef4ff;
   color: white;
+  width: 150px;
+  transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
-header input[type="text"]:focus {
-  width: calc(100% - 16px);
+nav ol li input[type="text"]:focus {
+  width: 200px;;
   outline: none;
   box-shadow: 0 0 0 2px rgb(212, 207, 207);
   transition: width 0.3s ease, box-shadow 0.3s ease;
@@ -101,7 +108,7 @@ header input[type="text"]:focus {
 
 section#left {
   width: min(28%, 300px);
-  height: calc(100vh - 143px);
+  height: calc(100vh - 83px);
   background-color: #2d69ebe3;
   float: left;
   overflow-y: auto;
@@ -109,7 +116,7 @@ section#left {
 
 main {
   width: calc(100% - min(28%, 300px));
-  height: calc(100vh - 143px);
+  height: calc(100vh - 83px);
   background-color: #eef4ff;
   float: left;
 }
