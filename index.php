@@ -31,6 +31,9 @@ if (!isset($_SESSION['user_id'])) {
             <li class="active">
                 <a href="#">ex3</a>
             </li>
+            <li>
+                <a href="wyloguj.php">Wyloguj</a>
+            </li>
             <li id="settings">
                 <a href="settings.php">&#9881</a>
             </li>
