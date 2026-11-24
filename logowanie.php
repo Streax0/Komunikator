@@ -43,7 +43,7 @@ if ($_POST) {
     <meta name="description" content="Zaloguj się do komunikatora Message">
     <title>Message | Logowanie</title>
     <link rel="stylesheet" href="styles/login.css">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <main class="login-page">

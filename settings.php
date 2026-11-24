@@ -18,6 +18,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Message</title>
     <meta name="description" content="Komunikator na praktyki; Damian , Wujek Luki i Piotruc">
     <link rel="stylesheet" href="styles/ustawienia.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <nav>
