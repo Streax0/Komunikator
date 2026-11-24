@@ -77,8 +77,52 @@ nav ol li a:focus-visible {
   outline-offset: 2px;
 }
 
+header {
+  background-color: rgb(42, 121, 173);
+  padding: 16px;
+  max-height: 60px;
+}
 
+header input[type="text"] {
+  width: 25%;
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(142, 143, 214, 0.5);
+  color: white;
+}
 
+header input[type="text"]:focus {
+  width: calc(100% - 16px);
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(212, 207, 207);
+}
+
+section#left {
+  width: min(28%, 300px);
+  height: calc(100vh - 143px);
+  background-color: rgb(49, 141, 202);
+  float: left;
+  overflow-y: auto;
+}
+
+main
+
+footer {
+    background-color: #2563eb;
+    clear: both;
+    height: 20px;
+    overflow: hidden;
+    text-align: center;
+    float: middle;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+    padding-top: 4px;
+    font-size: 14px;
+}
 
 .gwint:hover {
     background-color: rgb(25, 95, 112);
@@ -88,8 +132,4 @@ nav ol li a:focus-visible {
 .gwint {
     text-decoration: none;
     opacity: 0;
-}
-
-footer {
-    background-color: rgb(42, 121, 173);
 }

@@ -20,12 +20,12 @@
                 <a href="#">ex3</a>
             </li>
             <li id="settings">
-                <a href="settings.php">Ustawienia</a>
+                <a href="settings.php">&#9881</a>
             </li>
         </ol>
     </nav>
     <header>
-        
+        <input type="text" placeholder="Wyszukaj czat">
     </header>
     <section id="left">
 
@@ -37,7 +37,7 @@
         
     </section>
     <footer>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi tempore tenetur praesentium a, facilis culpa quae quaerat accusamus iusto officiis est cupiditate similique ex numquam iste ducimus aut dolore voluptas.</p>
+        <p>BACAITA - twój komuniaktor</p>
         <a href="indexgwint.php" target="_blank" class="gwint">content</a>
     </footer>
 </body>
