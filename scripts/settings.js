@@ -33,7 +33,6 @@ const strony = {
 }
 
 function przelaczanie() {
-    console.log(this.value);
     switch(this.value){
         case '1':
             main.innerHTML = strony['profil'] 
