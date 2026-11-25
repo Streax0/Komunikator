@@ -66,9 +66,10 @@ if (!isset($_SESSION['user_id'])) {
         
     </section>
     <footer>
-        <p>BACAITA - twój komuniaktor Contact our support at                         <a href="https://cssetti.pl/download" target="_blank">support.baskamessage.com</a></p>
+        <p>BACIATA - twój komuniaktor Contact our support at                         <a href="https://cssetti.pl/download" target="_blank">support.baskamessage.com</a></p>
         <a href="indexgwint.php" target="_blank" class="gwint">content</a>
     </footer>
 </body>
 <script src="scripts/settings.js"></script>
+<script src="scripts/index.js"></script>
 </html>
