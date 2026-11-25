@@ -136,6 +136,18 @@ nav ol li input[type="text"]:focus {
   overflow-y: auto;
 }
 
+.czat {
+  width: 94%;
+  height: 60px;
+  background-color: #eef4ff;
+  float: left;
+  overflow-y: auto;
+  margin: 8px 3%;
+  border-radius: 5px;
+  vetical-align: middle;
+  text-align: center;
+}
+
 main {
   width: calc(100% - min(28%, 300px));
   height: calc(100vh - 80px);
