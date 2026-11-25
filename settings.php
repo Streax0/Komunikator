@@ -38,9 +38,6 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="wyloguj.php">Wyloguj</a>
             </li>
             <li class="right">
-                <a href="settings.php">&#9881</a>
-            </li>
-            <li class="right">
                 <input type="text" placeholder="⌕ Wyszukaj czat">
             </li>
             <li id="burger" class="right">
