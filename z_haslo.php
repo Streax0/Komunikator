@@ -14,6 +14,7 @@
             <blockquote>
                 <q id="guote">Wartałoby nadbudować zadanie. Biermy się do roboty! ~ BW</q>
             </blockquote>
+            <button id="przycisk">Powrót do wcześniejszej Strony</button>
         </section>
 
         <aside class="login-intro" aria-label="Informacje o komunikatorze">
@@ -28,4 +29,14 @@
         </aside>
     </main>
     </body>
+    <script>
+        const naklikniety = document.getElementById("przycisk").addEventListener('click', przekierowanie)
+
+        function przekierowanie() {
+            window.location.replace("index.php")
+        }
+    </script>
     </html>
+
+
+

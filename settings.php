@@ -46,12 +46,14 @@ if (!isset($_SESSION['user_id'])) {
         </ol>
     </nav>
     <section id="left">
-        <p>Ustawienia MENU</p>
+        <div id="menu">
+            <p>Ustawienia MENU</p>
+        </div>
         <ul>
-            <li><a href="#">Ustawienia konta</a></li>
-            <li><a href="#">Ustawienia prywatności</a></li>
-            <li><a href="#">Ustawienia powiadomień</a></li>
-            <li><a href="#">Ustawienia wyglądu</a></li>
+            <li><button id="menub" value="1">Ustawienia konta</button></li>
+            <li><button id="menub" value="2">Ustawienia prywatności</button></li>
+            <li><button id="menub" value="3">Ustawienia powiadomień</button></li>
+            <li><button id="menub" value="4">Ustawienia wyglądu</button></li>
 
         </ul>
     </section>
