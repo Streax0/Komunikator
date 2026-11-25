@@ -165,8 +165,6 @@ footer {
     float: middle;
     color: white;
     position: fixed;
-    float: bottom;
-    dispay: inline-block;
     bottom: 0;
     width: 100%;
 }
