@@ -49,6 +49,7 @@ if (!isset($_SESSION['user_id'])) {
         </ol>
     </nav>
     <div id="menu-div">Zawartość wysuwana z góry</div>
+    <div id="bg-div"></div>
     <section id="left">
         <div class="czat" onclick="function wyswietlczat()">
             <a href=""></a>
