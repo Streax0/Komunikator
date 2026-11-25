@@ -25,13 +25,16 @@ DROP TABLE IF EXISTS `uzytkownicy`;
 CREATE TABLE `uzytkownicy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `imie` varchar(255) DEFAULT NULL,
-  `nazwisko` varchar(42550) DEFAULT NULL,
+  `nazwisko` varchar(255) DEFAULT NULL,
   `data_urodzenia` date DEFAULT NULL,
   `haslo_hash` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `aktywny` tinyint(1) NOT NULL DEFAULT 1,
+  `rola` enum('admin','uzytkownik','techniczny') DEFAULT 'uzytkownik',
+  `ban` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +43,6 @@ CREATE TABLE `uzytkownicy` (
 
 LOCK TABLES `uzytkownicy` WRITE;
 /*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
-INSERT INTO `uzytkownicy` VALUES (14,'sas','sas',NULL,'$2y$10$An.u5YWMFvum62d5Ddiw0.0W0EV5fBa1b','damian.2008pod@gmail.com');
 /*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-11-24 10:10:00
+-- Dump completed on 2026-11-25  9:18:32
