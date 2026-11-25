@@ -1,4 +1,5 @@
 <?php
+require_once './db/db.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -45,7 +46,9 @@ if (!isset($_SESSION['user_id'])) {
         </ol>
     </nav>
     <section id="left">
-
+        <div class="czat">
+            <p id="placeholder">Witaj w czacie!</p>
+        </div>
     </section>
     <main>
 

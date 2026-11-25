@@ -12,13 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? "");
     $name = trim($_POST["name"] ?? "");
     $surname = trim($_POST["surname"] ?? "");
+    $birthDateInput = trim($_POST["birthDate"] ?? "");
+    $birthDate = DateTimeImmutable::createFromFormat("!Y-m-d", $birthDateInput);
+    $dateErrors = DateTimeImmutable::getLastErrors();
+    $birthDateIsValid = $birthDate !== false
+        && $birthDate->format("Y-m-d") === $birthDateInput
+        && ($dateErrors === false || ($dateErrors["warning_count"] === 0 && $dateErrors["error_count"] === 0));
     $password = $_POST["password"] ?? "";
     $password2 = $_POST["password2"] ?? "";
 
-    if ($email === "" || $name === "" || $surname === "") {
+    if ($email === "" || $name === "" || $surname === "" || $birthDateInput === "") {
         $errorMessage = "Wypełnij wszystkie pola.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errorMessage = "Podaj prawidłowy adres e-mail.";
+    } elseif (!$birthDateIsValid) {
+        $errorMessage = "Podaj prawidłową datę urodzenia.";
+    } elseif ($birthDate > new DateTimeImmutable("today")) {
+        $errorMessage = "Data urodzenia nie może być datą przyszłą.";
     } elseif (strlen($password) < 8) {
         $errorMessage = "Hasło musi mieć co najmniej 8 znaków.";
     } elseif (!hash_equals($password, $password2)) {
@@ -26,9 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare(
-            "INSERT INTO uzytkownicy (email, imie, nazwisko, haslo_hash) VALUES (?, ?, ?, ?)"
+            "INSERT INTO uzytkownicy (email, imie, nazwisko, data_urodzenia, haslo_hash) VALUES (?, ?, ?, ?, ?)"
         );
-        $stmt->bind_param("ssss", $email, $name, $surname, $passwordHash);
+        $stmt->bind_param("sssss", $email, $name, $surname, $birthDateInput, $passwordHash);
 
         try {
             $stmt->execute();
@@ -95,6 +105,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="surname">Nazwisko</label>
                     <input type="text" id="surname" name="surname" autocomplete="family-name"
                         placeholder="np. Kowalska" required>
+                </div>
+                <div class="form-field">
+                    <label for="birthDate">Data urodzenia</label>
+                    <input type="date" id="birthDate" name="birthDate" autocomplete="bday"
+                        max="<?= date('Y-m-d') ?>"
+                        value="<?= htmlspecialchars($birthDateInput ?? '', ENT_QUOTES, "UTF-8") ?>" required>
                 </div>
 
                 <div class="form-field">
