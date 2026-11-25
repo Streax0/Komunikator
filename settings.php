@@ -43,8 +43,13 @@ if (!isset($_SESSION['user_id'])) {
             <li class="right">
                 <input type="text" placeholder="⌕ Wyszukaj czat">
             </li>
+            <li id="burger" class="right">
+                <div></div>
+            </li>
         </ol>
     </nav>
+    <div id="menu-div">Zawartość wysuwana z góry</div>
+    <div id="bg-div"></div>
     <section id="left">
         <div id="menu">
             <p>Ustawienia MENU</p>
