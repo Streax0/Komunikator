@@ -284,4 +284,31 @@ footer a {
   footer {
     font-size: 5px;
   }
+  #menu-div {
+  position: fixed;
+  display: block !important;
+  transform: translateY(-100%);
+  top:0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 250px;
+  color: black;
+  transition: transform 0.4s ease-in;
+  z-index: 999;
 }
+
+#menu-div.otwarte {
+  transform: translateY(24%)
+
+}
+}
+
+#menu-div {
+  display: none;
+  
+}
+
+
+
+

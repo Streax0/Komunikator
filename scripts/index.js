@@ -1,4 +1,15 @@
+const menuDiv = document.getElementById("menu-div");
+const burger = document.getElementById("burger").addEventListener('click', () => {
+    menuDiv.classList.toggle("otwarte");
+})
+
+
+function burgerf(){
+    console.log('kappi') //debug
+    
+}
+
 function wyswietlczat() {
-    var czat = document.querySelector('.czat');
-    var placeholder = document.getElementById('placeholder');
+    const czat = document.querySelector('.czat');
+    const placeholder = document.getElementById('placeholder');
 }
