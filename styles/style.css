@@ -47,6 +47,7 @@ nav ol {
   min-height: 60px;
   padding: 0 24px;
   vertical-align: middle;
+  position: relative;
 }
 
 nav div.logo img{
@@ -129,6 +130,15 @@ nav ol li input[type="text"]:focus {
   transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
+nav ol li #burger {
+  display: none;
+  width: 30px;
+  height: 30px;
+  background-color: #eef4ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 #left {
   width: min(28%, 300px);
   height: calc(100vh - 80px);
@@ -145,7 +155,7 @@ nav ol li input[type="text"]:focus {
   overflow-y: auto;
   margin: 8px 3%;
   border-radius: 5px;
-  vetical-align: middle;
+  vertical-align: middle;
   text-align: center;
 }
 
@@ -209,11 +219,59 @@ footer a {
   nav ol li input[type="text"] {
     width: clamp(60px,10vw,100px);
   }
-  nav ol .right {
+  nav ol li input[type="text"]:focus {
+    width: clamp(80px,15vw,150px);
+  }
+  nav ol li.active {
     display: none;
   }
-  nav ol .right::after {
-    content: "";
+  nav ol li.right a[href="wyloguj.php"] {
+    margin-right: 30px;
+  }
+  nav ol li div {
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #eef4ff;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    border-radius: 5px;
+  }
+  nav ol li div::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #eef4ff;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    border-radius: 5px;
+  }
+  nav ol li div::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #eef4ff;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    border-radius: 5px;
+  }
+  nav ol li#burger {
+    float: right;
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+  }
+  nav ol li:hover{
+    background-color: #2563eb;
   }
   main {
     height: 80%;

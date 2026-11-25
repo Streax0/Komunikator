@@ -43,10 +43,14 @@ if (!isset($_SESSION['user_id'])) {
             <li class="right">
                 <input type="text" placeholder="⌕ Wyszukaj czat">
             </li>
+            <li id="burger" class="right">
+                <div></div>
+            </li>
         </ol>
     </nav>
     <section id="left">
-        <div class="czat">
+        <div class="czat" onclick="function wyswietlczat()">
+            <a href=""></a>
             <p id="placeholder">Witaj w czacie!</p>
         </div>
     </section>
