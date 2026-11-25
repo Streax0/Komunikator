@@ -92,6 +92,7 @@ nav ol li a:hover {
   );
   background-size: 200% 100%;
   background-position: 100% 0;
+  transition: background-color 0.2s ease, background-position 0.45s ease;
 }
 
 nav ol li a:focus-visible {
@@ -161,8 +162,10 @@ footer {
     height: 20px;
     overflow: hidden;
     text-align: center;
-    float: middle;
     color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 footer p {
@@ -186,4 +189,41 @@ footer a {
 .gwint {
     text-decoration: none;
     opacity: 0;
+}
+
+
+@media (max-width: 860px) {
+  nav ol .active {
+    margin-left: 1px;
+  }
+  nav li  {
+    margin-left: 1px;
+  }
+  nav {
+    width: 100vw;
+    font-size: 12px;
+    height: 60px;
+  }
+  nav div.logo img {
+    width: 68px;
+    height: 50px;
+  }
+  nav ol li input[type="text"] {
+    width: clamp(60px,10vw,100px);
+  }
+  nav ol .right {
+    display: none;
+  }
+  nav ol .right::after {
+    content: "";
+  }
+  main {
+    height: 80%;
+  }
+  section {
+    height: 80%;
+  }
+  footer {
+    font-size: 5px;
+  }
 }
