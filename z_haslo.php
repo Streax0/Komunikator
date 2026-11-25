@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bląd połączenia z bazą danych</title>
-    <meta http-equiv="refresh" content="5;url=../logowanie.php">
     <link rel="stylesheet" href="./styles/db-error.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
