@@ -44,16 +44,23 @@ if (!isset($_SESSION['user_id'])) {
                 <input type="text" placeholder="⌕ Wyszukaj czat">
             </li>
             <li id="burger" class="right">
-                <div></div>
+                <button class="burger-toggle" type="button" aria-label="Otwórz menu"
+                    aria-controls="menu-div" aria-expanded="false">
+                    <span></span>
+                </button>
             </li>
         </ol>
     </nav>
-    <div id="menu-div">Zawartość wysuwana z góry</div>
+    <div id="menu-div" aria-hidden="true">
+        <a href="index.php">Strona główna</a>
+        <a href="settings.php">Ustawienia</a>
+        <a href="wyloguj.php">Wyloguj</a>
+    </div>
     <div id="bg-div"></div>
     <section id="left">
-        <div class="czat" onclick="function wyswietlczat()">
+        <div class="chat" onclick="function wyswietlczat()">
             <a href=""></a>
-            <p id="placeholder">Witaj w czacie!</p>
+            <p id="placeholder">Twoje Ostatnie Chaty</p>
         </div>
     </section>
     <main>

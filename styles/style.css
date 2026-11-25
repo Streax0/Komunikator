@@ -35,43 +35,52 @@ table {
 }
 
 nav {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   width: 100%;
+  min-height: 64px;
+  padding: 0 16px;
   background-color: #2563eb;
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 }
 
+nav div.logo {
+  flex: 0 0 auto;
+}
+
 nav ol {
-/**  display: flex;
-  align-items: center;**/
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
   gap: 8px;
-  min-height: 60px;
-  padding: 0 24px;
-  vertical-align: middle;
+  min-height: 64px;
+  padding: 0;
   position: relative;
 }
 
 nav div.logo img{
-  float: left;
-  margin-left: 12px;
-  margin-right: 12px;
-  width: 100px;
+  display: block;
+  width: 88px;
   height: 52px;
+  margin-right: 12px;
   padding: 4px;
   z-index: 100;
 }
 
-nav ol li.active {
-  float: left;
-  margin-top: 10px;
-}
-
+nav ol li.active,
 nav ol li.right {
-  float: right;
-  margin-top: 10px;
+  float: none;
+  margin: 0;
 }
 
 nav ol li {
-  max-width: 80%;
+  max-width: none;
+}
+
+nav ol li.active + li.right {
+  margin-left: auto;
 }
 
 nav ol li a {
@@ -81,6 +90,7 @@ nav ol li a {
   color: white;
   font-family: Arial, sans-serif;
   text-decoration: none;
+  white-space: nowrap;
   transition: background-color 0.2s ease, background-position 0.45s ease;
 }
 
@@ -130,21 +140,39 @@ nav ol li input[type="text"]:focus {
   transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
-nav ol li #burger {
+nav ol li#burger {
   display: none;
-  width: 30px;
-  height: 30px;
-  background-color: #eef4ff;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 #left {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   width: min(28%, 300px);
   height: calc(100vh - 80px);
-  background-color: #2d69ebe3;
+  padding: 18px 12px 24px;
+  border-right: 1px solid #1d4ed8;
+  background-color: #2563eb;
+  box-shadow: 4px 0 18px rgb(0 0 0 / 12%);
   float: left;
+  overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-color: #93c5fd #1d4ed8;
+  scrollbar-width: thin;
+}
+
+#left::-webkit-scrollbar {
+  width: 8px;
+}
+
+#left::-webkit-scrollbar-thumb {
+  border: 2px solid #2563eb;
+  border-radius: 999px;
+  background-color: #93c5fd;
+}
+
+#left::-webkit-scrollbar-thumb:hover {
+  background-color: #dbeafe;
 }
 
 .czat {
@@ -204,83 +232,159 @@ footer a {
   display: none;
 }
 
+#menu-div a {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 10px;
+  color: #17223b;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#menu-div a:hover,
+#menu-div a:focus-visible {
+  color: #1d4ed8;
+  background-color: #eff6ff;
+}
+
+#placeholder {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-align: left;
+}
+
+div.chat {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 94%;
+  min-height: 72px;
+  margin: 10px 3%;
+  padding: 14px 18px;
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-left: 4px solid #60a5fa;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff 0%, #eff6ff 100%);
+  box-shadow: 0 10px 24px rgb(15 23 42 / 18%);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+div.chat:hover {
+  border-color: #dbeafe;
+  border-left-color: #1d4ed8;
+  box-shadow: 0 14px 28px rgb(15 23 42 / 22%);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 860px) {
-  nav ol .active {
-    margin-left: 1px;
-  }
-  nav li  {
-    margin-left: 1px;
-  }
   nav {
-    width: 100vw;
+    width: 100%;
     font-size: 12px;
     height: 60px;
+    min-height: 60px;
     position: relative;
-    z-index: 1000;
+    z-index: 1003;
+    padding: 0 12px;
+  }
+  nav ol {
+    gap: 6px;
+    min-height: 60px;
   }
   nav div.logo img {
-    width: 68px;
-    height: 50px;
+    width: 64px;
+    height: 48px;
+    margin-right: 8px;
   }
   nav ol li input[type="text"] {
-    width: clamp(60px,10vw,100px);
+    width: clamp(88px, 18vw, 170px);
   }
   nav ol li input[type="text"]:focus {
-    width: clamp(80px,15vw,150px);
+    width: clamp(110px, 22vw, 200px);
   }
   nav ol li.active {
     display: none;
   }
-  nav ol li.right a[href="wyloguj.php"] {
-    margin-right: 30px;
-  }
-  nav ol li div {
-    display: block;
-    width: 100%;
-    height: 5px;
-    background-color: #eef4ff;
-    cursor: pointer;
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    border-radius: 5px;
-  }
-  nav ol li div::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 5px;
-    background-color: #eef4ff;
-    position: absolute;
-    top: 6px;
-    right: 0;
-    border-radius: 5px;
-  }
-  nav ol li div::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 5px;
-    background-color: #eef4ff;
-    position: absolute;
-    top: 12px;
-    right: 0;
-    border-radius: 5px;
-  }
   nav ol li#burger {
-    float: right;
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 30px;
-    height: 30px;
+    display: grid;
+    flex: 0 0 36px;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background-color: rgb(255 255 255 / 14%);
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
   }
-  nav ol li:hover{
-    background-color: #2563eb;
+  nav ol li#burger:hover {
+    background-color: rgb(255 255 255 / 24%);
+  }
+  nav ol li#burger .burger-toggle {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    font: inherit;
+    color: #fff;
+  }
+  nav ol li#burger .burger-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  nav ol li#burger .burger-toggle span {
+    position: relative;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: background-color 0.2s ease;
+  }
+  nav ol li#burger .burger-toggle span::before,
+  nav ol li#burger .burger-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: top 0.2s ease, transform 0.2s ease;
+  }
+  nav ol li#burger .burger-toggle span::before {
+    top: -6px;
+  }
+  nav ol li#burger .burger-toggle span::after {
+    top: 6px;
+  }
+  nav ol li#burger.otwarte .burger-toggle span {
+    background-color: transparent;
+  }
+  nav ol li#burger.otwarte .burger-toggle span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  nav ol li#burger.otwarte .burger-toggle span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  #left {
+    width: clamp(150px, 38%, 280px);
+    height: calc(100vh - 80px);
   }
   main {
-    height: 80%;
+    width: calc(100% - clamp(150px, 38%, 280px));
+    height: calc(100vh - 80px);
   }
   section {
     height: 80%;
@@ -293,18 +397,24 @@ footer a {
     position: fixed;
     top: 60px; 
     left: 0;
-    width: 100%;
-    height: 250px;
-    background-color: rgba(209, 198, 198, 0.9);
-    color: black;
-    transform: translateY(-150%); 
-    transition: transform 0.4s ease-out;
-    z-index: 999;
-    border-radius: 0 0 20px 20px;
+    box-sizing: border-box;
+    width: min(360px, 100%);
+    max-height: calc(100vh - 60px);
+    padding: 10px;
+    overflow-y: auto;
+    border-radius: 0 0 16px 16px;
+    background-color: #fff;
+    box-shadow: 0 18px 35px rgb(15 23 42 / 20%);
+    color: #17223b;
+    transform: translateY(-110%);
+    visibility: hidden;
+    transition: transform 0.4s ease-out, visibility 0.4s;
+    z-index: 1002;
   }
 
   #menu-div.otwarte {
     transform: translateY(0); 
+    visibility: visible;
   }
 
   #bg-div {
@@ -318,7 +428,7 @@ footer a {
     opacity: 0; 
     pointer-events: none; 
     transition: opacity 0.4s ease-in-out; 
-    z-index: 998;
+    z-index: 1001;
   }
 
   #bg-div.otwarte {
@@ -326,6 +436,40 @@ footer a {
     pointer-events: auto; 
   }
 
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 8px;
+  }
+  nav ol {
+    gap: 4px;
+  }
+  nav div.logo img {
+    width: 48px;
+    height: 42px;
+    margin-right: 4px;
+    padding: 2px;
+  }
+  nav ol li a {
+    padding: 8px 7px;
+  }
+  nav ol li input[type="text"] {
+    width: clamp(64px, 21vw, 100px);
+    padding: 7px;
+    font-size: 0.75rem;
+  }
+  nav ol li input[type="text"]:focus {
+    width: clamp(80px, 27vw, 120px);
+  }
+  #left {
+    padding: 14px 8px 20px;
+  }
+  div.chat {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px;
+  }
 }
 
 

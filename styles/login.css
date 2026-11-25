@@ -352,3 +352,23 @@ input[type="checkbox"]:focus-visible {
     outline: 3px solid rgb(37 99 235 / 35%);
     outline-offset: 3px;
 }
+
+#errorblock {
+    width: 100%;
+    margin: 20px auto 0;
+    padding: 14px 18px;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    color: #b91c1c;
+    background: #fef2f2;
+    box-shadow: 0 8px 20px rgb(185 28 28 / 8%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+#errorblock:empty {
+    display: none;
+}

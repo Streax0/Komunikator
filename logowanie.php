@@ -7,34 +7,28 @@ if (session_status() === PHP_SESSION_NONE) {
 $successMessage = $_SESSION["successMessage"] ?? "";
 unset($_SESSION["successMessage"]);
 
+$error = $_SESSION["loginError"] ?? "";
+unset($_SESSION["loginError"]);
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-$error = "";
-
-if ($_POST) {
     $stmt = $conn->prepare("SELECT * FROM uzytkownicy WHERE email = ?");
-    $stmt->execute([$_POST['email']]);
+    $stmt->execute([$email]);
     $user = $stmt->get_result()->fetch_assoc();
 
-    if (!$user) {
-        die("BŁĄD: Nie znaleziono w bazie takiego e-maila!");
+    if (!$user || !password_verify($password, $user['haslo_hash'])) {
+        $_SESSION["loginError"] = "Niepoprawny e-mail lub hasło";
+        header("Location: logowanie.php");
+        exit;
+    } else {
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: index.php");
+        exit;
     }
-
-    if (!password_verify($_POST['password'], $user['haslo_hash'])) {
-        die("BŁĄD: E-mail się zgadza, ale hasło jest niepoprawne!");
-    }
-
-    $_SESSION['user_id'] = $user['id'];
-    header("Location: index.php");
-    exit;
 }
-
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -78,12 +72,11 @@ if ($_POST) {
                         autocomplete="current-password" placeholder="Wpisz swoje hasło" required>
                 </div>
 
-
-
                 <button type="submit">Zaloguj się</button>
             </form>
 
             <p class="register-prompt">Nie masz jeszcze konta? <a href="rejestracja.php">Zarejestruj się</a></p>
+            <p id="errorblock"></p>
         </section>
 
         <aside class="login-intro" aria-label="Informacje o komunikatorze">
@@ -97,5 +90,12 @@ if ($_POST) {
             <span class="intro-decoration decoration-two" aria-hidden="true"></span>
         </aside>
     </main>
+
+    <script>
+      const emailError = <?php echo json_encode($error); ?>;
+      if (emailError) {
+        document.getElementById("errorblock").innerHTML = emailError;
+      }
+    </script>
 </body>
 </html>
