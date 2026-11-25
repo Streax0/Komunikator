@@ -72,7 +72,7 @@ if ($_POST) {
                 <div class="form-field">
                     <div class="field-label-row">
                         <label for="password">Hasło</label>
-                        <a href="#">Nie pamiętasz hasła?</a>
+                        <a href="z_haslo.php">Nie pamiętasz hasła?</a>
                     </div>
                     <input type="password" id="password" name="password"
                         autocomplete="current-password" placeholder="Wpisz swoje hasło" required>
