@@ -62,6 +62,10 @@ if (!isset($_SESSION['user_id'])) {
             <a href=""></a>
             <p id="placeholder">Twoje Ostatnie Chaty</p>
         </div>
+        <div>
+            <button id="create-room-btn">Utwórz Pokój</button>
+            <input type="text" id="room-code-input" placeholder="Wprowadź kod pokoju">
+            <button id="join-room-btn">Dołącz do Pokoju</button>
     </section>
     <main>
 
@@ -75,4 +79,5 @@ if (!isset($_SESSION['user_id'])) {
     </footer>
 </body>
 <script src="scripts/index.js"></script>
+<script src="scripts/room.js"></script>
 </html>
