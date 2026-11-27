@@ -46,6 +46,9 @@ function przelaczanie() {
         case '4':
             main.innerHTML = strony['wyglad'] 
             break  
+        default:
+            main.innerHTML = strony['profil'] 
+            break
 
 
     }
