@@ -449,3 +449,93 @@ main div h1 {
     font-size: 0.8rem;
   }
 }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.switch .slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background-color: #eff6ff;
+  transition: 0.4s;
+}
+
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  bottom: 3px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  transition: 0.4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #213b50;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.switch .slider.round {
+  border-radius: 24px;
+}
+
+html[data-theme="dark"] body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] nav,
+html[data-theme="dark"] footer {
+  background-color: #172554;
+}
+
+html[data-theme="dark"] #left {
+  border-right-color: #1e3a8a;
+  background-color: #172554;
+}
+
+html[data-theme="dark"] main {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] main div h1 {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] nav ol li input[type="text"] {
+  border-color: #475569;
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] #menu-div {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] #menu-div a {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] #menu-div a:hover,
+html[data-theme="dark"] #menu-div a:focus-visible {
+  background-color: #334155;
+  color: #bfdbfe;
+}
