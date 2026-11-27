@@ -68,8 +68,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="password">Hasło</label>
                         <a href="z_haslo.php">Nie pamiętasz hasła?</a>
                     </div>
-                    <input type="password" id="password" name="password"
-                        autocomplete="current-password" placeholder="Wpisz swoje hasło" required>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password"
+                            autocomplete="current-password" placeholder="Wpisz swoje hasło" required>
+                        <button type="button" id="ukryjpokaz" aria-label="Pokaż hasło" aria-pressed="false">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path class="eye-slash" d="M3 3l18 18"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <button type="submit">Zaloguj się</button>
@@ -96,6 +105,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (emailError) {
         document.getElementById("errorblock").innerHTML = emailError;
       }
+
+      const passwordInput = document.getElementById("password");
+      const showPasswordButton = document.getElementById("ukryjpokaz");
+      showPasswordButton.addEventListener("click", function() {
+        const showPassword = passwordInput.type === "password";
+        passwordInput.type = showPassword ? "text" : "password";
+        showPasswordButton.setAttribute("aria-label", showPassword ? "Ukryj hasło" : "Pokaż hasło");
+        showPasswordButton.setAttribute("aria-pressed", String(showPassword));
+      });
     </script>
 </body>
 </html>

@@ -104,7 +104,7 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+.password-input input {
     width: 100%;
     min-height: 52px;
     padding: 0 16px;
@@ -122,9 +122,60 @@ input::placeholder {
 }
 
 input[type="email"]:focus,
-input[type="password"]:focus {
+.password-input input:focus {
     border-color: #2563eb;
     box-shadow: 0 0 0 4px rgb(37 99 235 / 12%);
+}
+
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 56px;
+}
+
+#ukryjpokaz {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    min-height: 40px;
+    margin: 0;
+    padding: 8px;
+    border: 0;
+    border-radius: 8px;
+    color: #71809c;
+    background: transparent;
+    box-shadow: none;
+    transform: translateY(-50%);
+}
+
+#ukryjpokaz:hover {
+    color: #2563eb;
+    background: transparent;
+    transform: translateY(-50%);
+}
+
+#ukryjpokaz svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+#ukryjpokaz .eye-slash {
+    display: block;
+}
+
+#ukryjpokaz[aria-pressed="true"] .eye-slash {
+    display: none;
 }
 
 .remember {
@@ -249,6 +300,9 @@ input[type="checkbox"]:focus-visible {
     right: 12%;
 }
 
+
+
+
 @media (max-width: 760px) {
     .login-page {
         display: block;
@@ -311,7 +365,7 @@ input[type="checkbox"]:focus-visible {
     }
 
     input[type="email"],
-    input[type="password"],
+    .password-input input,
     button {
         min-height: 46px;
     }
