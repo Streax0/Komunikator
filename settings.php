@@ -52,6 +52,7 @@ if ($savedSettings) {
     <link rel="stylesheet" href="styles/ustawienia.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="scripts/theme.js"></script>
+    <link rel="stylesheet" href="styles/shared.css">
 </head>
 <body>
     <nav>
@@ -73,7 +74,7 @@ if ($savedSettings) {
                 </label>
             </li>
             <li class="right">
-                <a href="wyloguj.php">Wyloguj</a>
+                <button id="wyloguj"><strong>Wyloguj</strong></button>
             </li>
             <li class="right">
                 <input type="text" placeholder="⌕ Wyszukaj czat">

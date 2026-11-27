@@ -183,3 +183,25 @@ function bindPasswordForm() {
         }
     });
 }
+
+const wylogujBtn = document.getElementById("wyloguj").addEventListener("click", () => {
+    const popup = `<section id="popup-section" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center;z-index: 100000;;"> <div class="popup">
+        <p>Czy na pewno chcesz się wylogować?</p>
+        <button id="potwierdz-wylogowanie">Tak</button>
+        <button id="anuluj-wylogowanie">Nie</button>
+    </div></section>`;
+    document.body.insertAdjacentHTML('beforeend', popup);
+    const potwierdzWylogowanie = document.getElementById("potwierdz-wylogowanie");
+    const anulujWylogowanie = document.getElementById("anuluj-wylogowanie");
+    if (potwierdzWylogowanie && anulujWylogowanie) {
+        potwierdzWylogowanie.addEventListener("click", () => {
+        window.location.replace("wyloguj.php");
+        });
+        anulujWylogowanie.addEventListener("click", () => {
+            popupremove = document.getElementById("popup-section");
+            if (popupremove) {
+                popupremove.remove();
+            }
+        });
+
+}})

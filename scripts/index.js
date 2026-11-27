@@ -31,10 +31,32 @@ function burgerf(){
     
 }
 
-function wyswietlczat() {
-    const czat = document.querySelector('.czat');
-    const placeholder = document.getElementById('placeholder');
-}
+const wylogujBtn = document.getElementById("wyloguj").addEventListener("click", () => {
+    const popup = `
+        <section id="popup-section" class="popup-section">
+            <div class="popup">
+                <p>Czy na pewno chcesz się wylogować?</p>
+                <button id="potwierdz-wylogowanie">Tak</button>
+                <button id="anuluj-wylogowanie">Nie</button>
+            </div>
+        </section>
+    `;
+    document.body.insertAdjacentHTML('beforeend', popup);
+    const potwierdzWylogowanie = document.getElementById("potwierdz-wylogowanie");
+    const anulujWylogowanie = document.getElementById("anuluj-wylogowanie");
+    if (potwierdzWylogowanie && anulujWylogowanie) {
+        potwierdzWylogowanie.addEventListener("click", () => {
+        window.location.replace("wyloguj.php");
+        });
+        anulujWylogowanie.addEventListener("click", () => {
+            const popupremove = document.getElementById("popup-section");
+            if (popupremove) {
+                popupremove.remove();
+            }
+        });
+
+}})
+
 
 
 
