@@ -35,3 +35,6 @@ function wyswietlczat() {
     const czat = document.querySelector('.czat');
     const placeholder = document.getElementById('placeholder');
 }
+
+
+

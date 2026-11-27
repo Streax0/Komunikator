@@ -132,7 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-                <button type="submit">Zarejestruj się</button>
+
+                <button id="submit" type="submit">Zarejestruj się</button>
             </form>
 
             <p class="register-prompt">Nie masz jeszcze konta? <a href="logowanie.php">Zaloguj się</a></p>
@@ -149,5 +150,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <span class="intro-decoration decoration-two" aria-hidden="true"></span>
         </aside>
     </main>
+    
 </body>
 </html>

@@ -49,13 +49,15 @@ the application interface.
 
 2. Uruchom Apache i MySQL/MariaDB, np. z panelu XAMPP.
 3. W phpMyAdmin utwórz bazę `message_database`, a następnie zaimportuj
-   [`baza.sql`](baza.sql). Skrypt tworzy tabele `uzytkownicy` i `pokoje`.
+   [`baza.sql`](baza.sql). Skrypt tworzy podstawowe tabele aplikacji.
 4. Zaimportuj również [`db/p2p.sql`](db/p2p.sql), aby utworzyć tabele
    uczestników pokoi i sygnalizacji WebRTC. Przy istniejącej bazie importuj
    tylko ten plik — nie importuj ponownie całego `baza.sql`.
-5. Umieść katalog projektu w katalogu dokumentów Apache, np.
+5. Zaimportuj [`db/settings.sql`](db/settings.sql), aby utworzyć tabelę
+   ustawień. Przy istniejącej bazie możesz bezpiecznie zaimportować ten plik.
+6. Umieść katalog projektu w katalogu dokumentów Apache, np.
    `C:\xampp\htdocs\Komunikator`.
-6. Otwórz `http://localhost/Komunikator/`.
+7. Otwórz `http://localhost/Komunikator/`.
 
 Możesz też wejść bezpośrednio na stronę rejestracji:
 `http://localhost/Komunikator/rejestracja.php`.
@@ -158,14 +160,15 @@ ponownym wykorzystaniem lub dystrybucją projektu.
 
 2. Start Apache and MySQL/MariaDB, for example from the XAMPP Control Panel.
 3. In phpMyAdmin, create a database named `message_database`, then import
-   [`baza.sql`](baza.sql). The script creates the `uzytkownicy` and `pokoje`
-   tables.
+   [`baza.sql`](baza.sql). The script creates the application's base tables.
 4. Also import [`db/p2p.sql`](db/p2p.sql) to create the room-participant and
    WebRTC signaling tables. If the database already exists, import only this
    file—do not re-import all of `baza.sql`.
-5. Place the project directory in Apache's document root, for example
+5. Import [`db/settings.sql`](db/settings.sql) to create the settings table.
+   This file is safe to import into an existing database.
+6. Place the project directory in Apache's document root, for example
    `C:\xampp\htdocs\Komunikator`.
-6. Open `http://localhost/Komunikator/`.
+7. Open `http://localhost/Komunikator/`.
 
 You can also open the registration page directly:
 `http://localhost/Komunikator/rejestracja.php`.

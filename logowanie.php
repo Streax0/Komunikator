@@ -81,7 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <button type="submit">Zaloguj się</button>
+                <button id="loginn" type="submit">Zaloguj się</button>
+                <p id="status"></p>
             </form>
 
             <p class="register-prompt">Nie masz jeszcze konta? <a href="rejestracja.php">Zarejestruj się</a></p>
@@ -106,14 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById("errorblock").innerHTML = emailError;
       }
 
-      const passwordInput = document.getElementById("password");
-      const showPasswordButton = document.getElementById("ukryjpokaz");
-      showPasswordButton.addEventListener("click", function() {
-        const showPassword = passwordInput.type === "password";
-        passwordInput.type = showPassword ? "text" : "password";
-        showPasswordButton.setAttribute("aria-label", showPassword ? "Ukryj hasło" : "Pokaż hasło");
-        showPasswordButton.setAttribute("aria-pressed", String(showPassword));
-      });
+    
+;
     </script>
+    <script src="scripts/login.js"></script>
 </body>
 </html>

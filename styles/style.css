@@ -13,13 +13,17 @@ summary, time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+
 article, aside, details, figcaption, figure, footer, header, hgroup,
 menu, nav, section {
   display: block;
 }
 body {
   line-height: 1;
+  background-image: url('../bg.jpg');
+  background-size: cover;
 }
+
 ol, ul {
   list-style: none;
 }
@@ -42,6 +46,7 @@ nav {
   min-height: 64px;
   padding: 0 16px;
   background-color: #2563eb;
+  opacity: 0.93;
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 }
 
@@ -200,6 +205,7 @@ nav ol li#burger {
   width: min(28%, 300px);
   height: calc(100vh - 80px);
   padding: 18px 12px 24px;
+  opacity: 0.93;
   border-right: 1px solid #1d4ed8;
   background-color: #2563eb;
   box-shadow: 4px 0 18px rgb(0 0 0 / 12%);
@@ -239,7 +245,6 @@ nav ol li#burger {
 main {
   width: calc(100% - min(28%, 300px));
   height: calc(100vh - 80px);
-  background-color: #eef4ff;
   float: left;
 }
 
@@ -628,8 +633,8 @@ div.chat:hover {
 }
 
 html[data-theme="dark"] body {
-  background-color: #0f172a;
   color: #e2e8f0;
+  background-image: url('../bg-dark.jpg');
 }
 
 html[data-theme="dark"] nav,
@@ -648,9 +653,7 @@ html[data-theme="dark"] #left::-webkit-scrollbar-thumb {
   background-color: #475569;
 }
 
-html[data-theme="dark"] main {
-  background-color: #0f172a;
-}
+
 
 html[data-theme="dark"] div.chat {
   border-color: #334155;

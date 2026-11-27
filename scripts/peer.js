@@ -24,7 +24,7 @@ window.startP2PChat = function(room) {
     }
 
     function showError(error) {
-        console.error('P2P error:', error);
+        
         showStatus('Błąd połączenia. Odśwież stronę i spróbuj ponownie.');
     }
 

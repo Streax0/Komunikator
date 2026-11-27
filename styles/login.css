@@ -171,11 +171,11 @@ input[type="email"]:focus,
 }
 
 #ukryjpokaz .eye-slash {
-    display: block;
+    display: none;
 }
 
 #ukryjpokaz[aria-pressed="true"] .eye-slash {
-    display: none;
+    display: block;
 }
 
 .remember {
