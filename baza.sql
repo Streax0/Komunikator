@@ -38,6 +38,22 @@ CREATE TABLE `uzytkownicy` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `pokoje`
+--
+
+DROP TABLE IF EXISTS `pokoje`;
+CREATE TABLE `pokoje` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kod` char(8) NOT NULL,
+  `utworzyl_id` int(11) NOT NULL,
+  `utworzono` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `kod` (`kod`),
+  KEY `utworzyl_id` (`utworzyl_id`),
+  CONSTRAINT `pokoje_ibfk_1` FOREIGN KEY (`utworzyl_id`) REFERENCES `uzytkownicy` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
 -- Dumping data for table `uzytkownicy`
 --
 
