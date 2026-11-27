@@ -124,14 +124,11 @@ nav ol li input[type="text"] {
   transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
 nav ol li input[type="text"] {
   border: 1px solid #212325;
   outline: none;
   color: #17223b;
 }
-
 
 nav ol li input[type="text"]:focus {
   width: clamp(220px, 25vw, 450px);
@@ -139,6 +136,58 @@ nav ol li input[type="text"]:focus {
   box-shadow: 0 0 0 2px rgb(212, 207, 207);
   transition: width 0.3s ease, box-shadow 0.3s ease;
 }
+
+.switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.switch .slider {
+position: absolute;
+cursor: pointer;
+top: 0; 
+left: 0; 
+right: 0; 
+bottom: 0;
+background-color: #eff6ff;
+transition: .4s;
+}
+
+.switch .slider:before {
+position: absolute;
+content: "";
+height: 18px; 
+width: 18px;
+left: 3px; 
+bottom: 3px;
+background-color: #2563eb;
+transition: .4s;
+}
+
+.switch input:checked + .slider {
+background-color: #213b50;
+}
+
+.switch input:checked + .slider::before {
+transform: translateX(26px);
+}
+
+.switch .slider.round {
+border-radius: 24px;
+}
+
+.switch .slider.round::before {
+border-radius: 50%;
+}
+
 
 nav ol li#burger {
   display: none;
@@ -192,6 +241,69 @@ main {
   height: calc(100vh - 80px);
   background-color: #eef4ff;
   float: left;
+}
+
+section#left div button {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 54px;
+    padding: 12px;
+    color: white;
+    font-weight: 600;
+    line-height: 1.35;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 45%);
+    background-color: rgb(255 255 255 / 12%);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin: 10px 0;
+}
+
+section#left div button:hover {
+     background-image: linear-gradient(
+    110deg,
+    rgb(255 255 255 / 8%),
+    rgb(255 255 255 / 35%),
+    rgb(255 255 255 / 8%)
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-color 0.2s ease, background-position 0.45s ease;
+}
+
+section#left div input {
+  box-sizing: border-box;
+    width: 100%;
+    min-height: 54px;
+    padding: 12px;
+    color: white;
+    font-weight: 600;
+    line-height: 1.35;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 45%);
+    background-color: rgb(255 255 255 / 12%);
+    text-align: center;
+    cursor: cell;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin: 5px 0;
+}
+
+section#left div input::placeholder {
+  color: rgb(255 255 255);
+  font-weight: 600;
+}
+
+section#left div input:hover {
+  background-image: linear-gradient(
+    110deg,
+    rgb(255 255 255 / 8%),
+    rgb(255 255 255 / 35%),
+    rgb(255 255 255 / 8%)
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-color 0.2s ease, background-position 0.45s ease;
 }
 
 footer {
@@ -472,7 +584,65 @@ div.chat:hover {
   }
 }
 
+html[data-theme="dark"] body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
 
+html[data-theme="dark"] nav,
+html[data-theme="dark"] footer {
+  background-color: #172554;
+}
 
+html[data-theme="dark"] #left {
+  border-right-color: #1e3a8a;
+  background-color: #172554;
+  scrollbar-color: #475569 #172554;
+}
 
+html[data-theme="dark"] #left::-webkit-scrollbar-thumb {
+  border-color: #172554;
+  background-color: #475569;
+}
 
+html[data-theme="dark"] main {
+  background-color: #0f172a;
+}
+
+html[data-theme="dark"] div.chat {
+  border-color: #334155;
+  border-left-color: #60a5fa;
+  background: linear-gradient(135deg, #1e293b 0%, #172033 100%);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 35%);
+}
+
+html[data-theme="dark"] div.chat:hover {
+  border-color: #475569;
+  border-left-color: #93c5fd;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 45%);
+}
+
+html[data-theme="dark"] #placeholder {
+  color: #bfdbfe;
+}
+
+html[data-theme="dark"] nav ol li input[type="text"] {
+  border-color: #475569;
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] #menu-div {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] #menu-div a {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] #menu-div a:hover,
+html[data-theme="dark"] #menu-div a:focus-visible {
+  background-color: #334155;
+  color: #bfdbfe;
+}

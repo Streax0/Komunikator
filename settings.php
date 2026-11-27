@@ -20,6 +20,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="description" content="Komunikator na praktyki; Damian , Wujek Luki i Piotruc">
     <link rel="stylesheet" href="styles/ustawienia.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="scripts/theme.js"></script>
 </head>
 <body>
     <nav>
@@ -33,6 +34,12 @@ if (!isset($_SESSION['user_id'])) {
             </li>
             <li class="active">
                 <a href="#">ex3</a>
+            </li>
+            <li class="right">
+                <label class="switch">
+                    <input class="theme-toggle" type="checkbox" aria-label="Włącz motyw ciemny">
+                    <span class="slider round"></span>
+                </label>
             </li>
             <li class="right">
                 <a href="wyloguj.php">Wyloguj</a>
