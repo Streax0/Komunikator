@@ -19,6 +19,10 @@ menu, nav, section {
 }
 body {
   line-height: 1;
+  background-image: url('../bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 ol, ul {
   list-style: none;
@@ -150,7 +154,6 @@ main {
   min-width: 0;
   box-sizing: border-box;
   padding: clamp(16px, 3vw, 36px);
-  background-color: #eef4ff;
   float: left;
 }
 
@@ -511,7 +514,7 @@ main div h1 {
 }
 
 html[data-theme="dark"] body {
-  background-color: #0f172a;
+  background-image: url('../bg-dark.jpg');
   color: #e2e8f0;
 }
 
@@ -526,7 +529,6 @@ html[data-theme="dark"] #left {
 }
 
 html[data-theme="dark"] main {
-  background-color: #0f172a;
   color: #e2e8f0;
 }
 
