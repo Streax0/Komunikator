@@ -51,3 +51,21 @@ function generateRoomCode() {
     crypto.getRandomValues(random);
     return Array.from(random, (byte) => characters[byte % characters.length]).join('');
 }
+
+
+const joinRoomBtn = document.getElementById('join-room-btn');
+const roomCodeInput = document.getElementById('room-code-input');
+const roomStatus = document.getElementById('room-status');
+
+joinRoomBtn.addEventListener('click', async function() {
+    const roomCode = roomCodeInput.value.trim();
+    if (roomCode) {
+        const data = await koddophp(roomCode);
+
+        if (data && data.success) {
+            roomStatus.textContent = 'Dołączono do pokoju.';
+        } else {
+            roomStatus.textContent = 'Nie udało się dołączyć do pokoju.';
+        }
+    }
+});

@@ -73,6 +73,8 @@ if (!isset($_SESSION['user_id'])) {
             <button id="create-room-btn">Utwórz Pokój</button>
             <input type="text" id="room-code-input" placeholder="Wprowadź kod pokoju">
             <button id="join-room-btn">Dołącz do Pokoju</button>
+            <p id="room-status"></p>
+        </div>
     </section>
     <main>
 
