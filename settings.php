@@ -73,7 +73,7 @@ if ($savedSettings) {
                 </label>
             </li>
             <li class="right">
-                <a href="wyloguj.php">Wyloguj</a>
+                <button id="wyloguj"><strong>Wyloguj</strong></button>
             </li>
             <li class="right">
                 <input type="text" placeholder="⌕ Wyszukaj czat">

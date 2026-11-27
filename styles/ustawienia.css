@@ -515,6 +515,9 @@ main div h1 {
 
 html[data-theme="dark"] body {
   background-image: url('../bg-dark.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #e2e8f0;
 }
 
