@@ -6,11 +6,13 @@ const roompage = {
 </div>`
 }
 
-
+const main = document.querySelector("main");
 
 
 utworzroom = document.getElementById('create-room-btn').addEventListener('click', function() {
     const roomCode = generateRoomCode();
+    main.innerHTML = roompage['strona'];
+    document.getElementById('room-code').textContent = roomCode;
     
 });
 
