@@ -58,7 +58,7 @@ const roomCodeInput = document.getElementById('room-code-input');
 const roomStatus = document.getElementById('room-status');
 
 joinRoomBtn.addEventListener('click', async function() {
-    const roomCode = roomCodeInput.value.trim();
+    const roomCode = roomCodeInput.value.trim().toUpperCase();
     if (roomCode) {
         const data = await koddophp(roomCode);
 
@@ -69,3 +69,5 @@ joinRoomBtn.addEventListener('click', async function() {
         }
     }
 });
+
+
