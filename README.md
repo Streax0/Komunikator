@@ -7,9 +7,9 @@ the application interface.
 ![Baśka Message logo](logo.png)
 
 > **Project status:** This project is unfinished and under active development.
-> The chat and settings screens are currently mostly visual prototypes;
-> sending, receiving, and storing messages are not implemented. It is not ready
-> for production use.
+> One-to-one text chat uses WebRTC data channels with PHP/MySQL polling for
+> connection setup. Messages are not stored; the project is not ready for
+> production use.
 
 ## Contents
 
@@ -27,8 +27,10 @@ the application interface.
   sprawdzane przez `password_verify()`.
 - Ochrona głównej strony i ustawień przez sesję oraz wylogowywanie.
 - Tworzenie pokoi i zapisywanie ich kodów w bazie danych.
+- Jednoosobowy czat tekstowy P2P przez WebRTC; wiadomości nie są zapisywane.
+- [Opis działania skryptów czatu P2P](./OPIS-CZATU-P2P.md).
 - Responsywne widoki logowania i rejestracji.
-- Wstępny interfejs czatu i ustawień — bez działającej obsługi wiadomości.
+- Ustawienia są nadal w trakcie rozwoju.
 
 ### Technologie
 
@@ -48,9 +50,12 @@ the application interface.
 2. Uruchom Apache i MySQL/MariaDB, np. z panelu XAMPP.
 3. W phpMyAdmin utwórz bazę `message_database`, a następnie zaimportuj
    [`baza.sql`](baza.sql). Skrypt tworzy tabele `uzytkownicy` i `pokoje`.
-4. Umieść katalog projektu w katalogu dokumentów Apache, np.
+4. Zaimportuj również [`db/p2p.sql`](db/p2p.sql), aby utworzyć tabele
+   uczestników pokoi i sygnalizacji WebRTC. Przy istniejącej bazie importuj
+   tylko ten plik — nie importuj ponownie całego `baza.sql`.
+5. Umieść katalog projektu w katalogu dokumentów Apache, np.
    `C:\xampp\htdocs\Komunikator`.
-5. Otwórz `http://localhost/Komunikator/`.
+6. Otwórz `http://localhost/Komunikator/`.
 
 Możesz też wejść bezpośrednio na stronę rejestracji:
 `http://localhost/Komunikator/rejestracja.php`.
@@ -131,8 +136,10 @@ ponownym wykorzystaniem lub dystrybucją projektu.
   checked with `password_verify()`.
 - Session-protected main and settings pages, plus logout.
 - Room creation with room codes saved in the database.
+- One-to-one P2P text chat using WebRTC; messages are not stored.
+- [Explanation of the P2P chat scripts](./OPIS-CZATU-P2P.md).
 - Responsive login and registration screens.
-- Early chat and settings interfaces — message handling is not functional yet.
+- Settings are still under development.
 
 ### Tech stack
 
@@ -153,9 +160,12 @@ ponownym wykorzystaniem lub dystrybucją projektu.
 3. In phpMyAdmin, create a database named `message_database`, then import
    [`baza.sql`](baza.sql). The script creates the `uzytkownicy` and `pokoje`
    tables.
-4. Place the project directory in Apache's document root, for example
+4. Also import [`db/p2p.sql`](db/p2p.sql) to create the room-participant and
+   WebRTC signaling tables. If the database already exists, import only this
+   file—do not re-import all of `baza.sql`.
+5. Place the project directory in Apache's document root, for example
    `C:\xampp\htdocs\Komunikator`.
-5. Open `http://localhost/Komunikator/`.
+6. Open `http://localhost/Komunikator/`.
 
 You can also open the registration page directly:
 `http://localhost/Komunikator/rejestracja.php`.

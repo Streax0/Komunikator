@@ -98,5 +98,6 @@ $stmt->close();
     </footer>
 </body>
 <script src="scripts/index.js"></script>
+<script src="scripts/peer.js"></script>
 <script src="scripts/room.js"></script>
 </html>
