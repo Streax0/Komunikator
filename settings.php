@@ -52,6 +52,7 @@ if ($savedSettings) {
     <link rel="stylesheet" href="styles/ustawienia.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="scripts/theme.js"></script>
+    <link rel="stylesheet" href="styles/shared.css">
 </head>
 <body>
     <nav>

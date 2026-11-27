@@ -1,0 +1,126 @@
+.popup-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(4px);
+}
+
+.popup {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: min(100%, 420px);
+    padding: 28px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background-color: #fff;
+    color: #17223b;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.28);
+}
+
+.popup p {
+    grid-column: 1 / -1;
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.popup button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.popup button:hover {
+    transform: translateY(-1px);
+}
+
+.popup button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+#potwierdz-wylogowanie {
+    background-color: #1014d1;
+    color: #fff;
+}
+
+#potwierdz-wylogowanie:hover {
+    background-color: #0e11b3;
+}
+
+#anuluj-wylogowanie {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+#anuluj-wylogowanie:hover {
+    background-color: #e2e8f0;
+}
+
+html[data-theme="dark"] .popup {
+    border-color: #334155;
+    background-color: #1e293b;
+    color: #e2e8f0;
+}
+
+html[data-theme="dark"] #anuluj-wylogowanie {
+    border-color: #475569;
+    background-color: #334155;
+    color: #e2e8f0;
+}
+
+html[data-theme="dark"] #anuluj-wylogowanie:hover {
+    background-color: #475569;
+}
+
+
+nav ol li button {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+nav ol li button:hover {
+  background-image: linear-gradient(
+    110deg,
+    rgb(255 255 255 / 8%),
+    rgb(255 255 255 / 35%),
+    rgb(255 255 255 / 8%)
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-color 0.2s ease, background-position 0.45s ease;
+}
+
+nav ol li button:focus-visible {
+  outline: 2px solid rgb(156, 146, 253);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+    .popup {
+        padding: 22px;
+    }
+}
