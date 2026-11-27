@@ -58,7 +58,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
     <div id="bg-div"></div>
     <section id="left">
-        <div class="chat" onclick="function wyswietlczat()">
+        <div class="chat">
             <a href=""></a>
             <p id="placeholder">Twoje Ostatnie Chaty</p>
         </div>
