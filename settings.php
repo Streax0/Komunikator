@@ -8,6 +8,36 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: logowanie.php");
     exit;
 }
+
+if (empty($_SESSION['settings_csrf'])) {
+    $_SESSION['settings_csrf'] = bin2hex(random_bytes(32));
+}
+
+$settings = [
+    'aktywnosc' => 'online',
+    'motyw' => 0,
+    'powiadomienia' => 1,
+];
+
+$stmt = $conn->prepare(
+    "SELECT aktywnosc, motyw, powiadomienia FROM ustawienia WHERE id_uzytkownika = ?"
+);
+$stmt->bind_param("i", $_SESSION['user_id']);
+$stmt->execute();
+$savedSettings = $stmt->get_result()->fetch_assoc();
+$stmt->close();
+
+if ($savedSettings) {
+    if ($savedSettings['aktywnosc'] !== null) {
+        $settings['aktywnosc'] = $savedSettings['aktywnosc'];
+    }
+    if ($savedSettings['motyw'] !== null) {
+        $settings['motyw'] = (int) $savedSettings['motyw'];
+    }
+    if ($savedSettings['powiadomienia'] !== null) {
+        $settings['powiadomienia'] = (int) $savedSettings['powiadomienia'];
+    }
+}
 ?>
 
 
@@ -18,6 +48,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message</title>
     <meta name="description" content="Komunikator na praktyki; Damian , Wujek Luki i Piotruc">
+    <meta name="csrf-token" content="<?= htmlspecialchars($_SESSION['settings_csrf'], ENT_QUOTES, 'UTF-8') ?>">
     <link rel="stylesheet" href="styles/ustawienia.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="scripts/theme.js"></script>
@@ -83,6 +114,9 @@ if (!isset($_SESSION['user_id'])) {
         <p>BACIATA - twój komuniaktor Contact our support at                         <a href="https://cssetti.pl/download" target="_blank">support.baskamessage.com</a></p>
         <a href="indexgwint.php" target="_blank" class="gwint">content</a>
     </footer>
+    <script>
+        window.savedSettings = <?= json_encode($settings, JSON_UNESCAPED_UNICODE) ?>;
+    </script>
 </body>
 <script src="scripts/settings.js"></script>
 <script src="scripts/index.js"></script>

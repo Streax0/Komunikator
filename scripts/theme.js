@@ -13,6 +13,12 @@
     applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
 
     document.addEventListener("DOMContentLoaded", () => {
+        if (typeof window.savedSettings !== "undefined" && window.savedSettings.motyw !== undefined) {
+            const theme = Number(window.savedSettings.motyw) === 1 ? "dark" : "light";
+            localStorage.setItem(storageKey, theme);
+            applyTheme(theme);
+        }
+
         applyTheme(root.dataset.theme);
 
         document.querySelectorAll(".theme-toggle").forEach(toggle => {
