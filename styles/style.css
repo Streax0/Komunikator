@@ -655,7 +655,23 @@ main div:nth-of-type(2) ol li {
     opacity: 1;
     pointer-events: auto; 
   }
-
+    main div:nth-of-type(2) {
+    width: 95%;
+    margin: 1.5% 5px;
+    float: none;
+    height: 80%;
+    margin-top: 5%;
+  }
+  main div:first-of-type {
+    width: 95%;
+    margin: 1.5% 5px;
+    float: none;
+    height: 10%;
+    font-size: 0.7rem;
+  }
+  footer p {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 480px) {
