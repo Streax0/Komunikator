@@ -57,6 +57,24 @@ CREATE TABLE `pokoje` (
 -- Dumping data for table `uzytkownicy`
 --
 
+DROP TABLE IF EXISTS `ustawienia`;
+CREATE TABLE `ustawienia` (
+  `id` int(11) NOT NULL,
+  `id_uzytkownika` int(11) DEFAULT NULL,
+  `aktywnosc` enum('online','zaraz_wracam','nie_przeszkadzac','offline','prywatne') DEFAULT NULL,
+  `motyw` tinyint(1) DEFAULT NULL,
+  `powiadomienia` tinyint(1) DEFAULT NULL,
+  UNIQUE KEY `id_uzytkownika` (`id_uzytkownika`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE `ustawienia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_ust_uzyt` (`id_uzytkownika`);
+  ALTER TABLE `ustawienia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  ALTER TABLE `ustawienia`
+  ADD CONSTRAINT `fk_ust_uzyt` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
 LOCK TABLES `uzytkownicy` WRITE;
 /*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
 /*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;

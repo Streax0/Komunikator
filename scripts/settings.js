@@ -7,65 +7,179 @@ menub.forEach(element => {
 });
 
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content ?? "";
+const savedSettings = window.savedSettings ?? {};
+
+async function saveSettings(payload) {
+    const response = await fetch("settings_save.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({ ...payload, csrf_token: csrfToken })
+    });
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw new Error(result.error || "Nie udało się zapisać ustawień.");
+    }
+    return result;
+}
+
+function setCheckedValue(name, value) {
+    const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
+    if (input) {
+        input.checked = true;
+    }
+}
+
 const strony = {
     profil: `
         <div>
-            <h1>Ustawnienia Konta<h1>
+            <h1>Ustawienia Konta</h1>
         </div>
-        <p>Zmień hasło</p>
-        <p>Stare hasło: <input type="password" name="oldpassword" id="oldpassword"><br></p>
-        <p>Nowe hasło: <input type="password" name="newpassword" id="newpassword"><br></p>
-        <p>Potwierdź nowe hasło: <input type="password" name="confirmnewpassword" id="confirmnewpassword"><br></p>
-        <button type="submit">Zmień hasło</button>
+        <form id="password-form">
+            <p>Zmień hasło</p>
+            <p>Stare hasło: <input type="password" name="oldpassword" id="oldpassword" required><br></p>
+            <p>Nowe hasło: <input type="password" name="newpassword" id="newpassword" minlength="8" required><br></p>
+            <p>Potwierdź nowe hasło: <input type="password" name="confirmnewpassword" id="confirmnewpassword" minlength="8" required><br></p>
+            <button type="submit">Zmień hasło</button>
+            <p class="settings-status" role="status"></p>
+        </form>
     `,
     prywatnosc: `
         <div>
-            <h1>Ustawnienia Prywatnosci<h1>
+            <h1>Ustawienia Prywatności</h1>
         </div>
-        <p>Ustawienia aktywności</p>
-        <label><input type="radio" name="activity" value="show">Online</label><br>
-        <label><input type="radio" name="activity" value="hide">Zaraz wracam</label><br>
-        <label><input type="radio" name="activity" value="afk">Nie przeszkadzać</label><br>
-        <label><input type="radio" name="activity" value="invisible">Offline</label><br>
-        <label><input type="radio" name="activity" value="offline">Prywatne</label><br>
+        <form data-settings-form="aktywnosc">
+            <p>Ustawienia aktywności</p>
+            <label><input type="radio" name="activity" value="online">Online</label><br>
+            <label><input type="radio" name="activity" value="zaraz_wracam">Zaraz wracam</label><br>
+            <label><input type="radio" name="activity" value="nie_przeszkadzac">Nie przeszkadzać</label><br>
+            <label><input type="radio" name="activity" value="offline">Offline</label><br>
+            <label><input type="radio" name="activity" value="prywatne">Prywatne</label><br>
+            <button type="submit">Zapisz</button>
+            <p class="settings-status" role="status"></p>
+        </form>
     `,
     powiadomienia: `
         <div>
-            <h1>Ustawnienia Powiadomien<h1>
+            <h1>Ustawienia Powiadomień</h1>
         </div>
-        <p>Ustawienia wyglądu</p>
-        <label><input type="radio" name="appearance">Motyw jasny</label><br>
-        <label><input type="radio" name="appearance">Motyw ciemny</label><br>
+        <form data-settings-form="powiadomienia">
+            <p>Ustawienia powiadomień</p>
+            <label><input type="radio" name="notifications" value="1">Powiadomienia włączone</label><br>
+            <label><input type="radio" name="notifications" value="0">Powiadomienia wyłączone</label><br>
+            <button type="submit">Zapisz</button>
+            <p class="settings-status" role="status"></p>
+        </form>
     `,
     wyglad: `
         <div>
-            <h1>Ustawnienia Wygladu<h1>
+            <h1>Ustawienia Wyglądu</h1>
         </div>
-        <p>Ustawienia powiadomień</p>
-        <label><input type="radio" name="notifications">Powiadomienia włączone</label><br>
-        <label><input type="radio" name="notifications">Powiadomienia wyłączone</label><br>
+        <form data-settings-form="motyw">
+            <p>Ustawienia wyglądu</p>
+            <label><input type="radio" name="appearance" value="0">Motyw jasny</label><br>
+            <label><input type="radio" name="appearance" value="1">Motyw ciemny</label><br>
+            <button type="submit">Zapisz</button>
+            <p class="settings-status" role="status"></p>
+        </form>
     `
-    
 }
 
 function przelaczanie() {
     switch(this.value){
         case '1':
-            main.innerHTML = strony['profil'] 
+            main.innerHTML = strony['profil']
+            bindPasswordForm()
             break
         case '2':
-            main.innerHTML = strony['prywatnosc'] 
+            main.innerHTML = strony['prywatnosc']
+            setCheckedValue("activity", savedSettings.aktywnosc)
+            bindSettingsForm()
             break
         case '3':
-            main.innerHTML = strony['powiadomienia'] 
+            main.innerHTML = strony['powiadomienia']
+            setCheckedValue("notifications", String(savedSettings.powiadomienia ?? 1))
+            bindSettingsForm()
             break
         case '4':
-            main.innerHTML = strony['wyglad'] 
+            main.innerHTML = strony['wyglad']
+            setCheckedValue("appearance", String(savedSettings.motyw ?? 0))
+            bindSettingsForm()
             break  
-        default :
-            main.innerHTML = strony['profil'] 
+        default:
+            main.innerHTML = strony['profil']
+            bindPasswordForm()
             break
-
-
     }
+}
+
+function bindSettingsForm() {
+    document.querySelectorAll("[data-settings-form]").forEach(form => {
+        form.addEventListener("submit", async event => {
+            event.preventDefault();
+            const status = form.querySelector(".settings-status");
+            const type = form.dataset.settingsForm;
+            const field = type === "aktywnosc" ? "activity"
+                : type === "powiadomienia" ? "notifications"
+                : "appearance";
+            const selected = form.querySelector(`[name="${field}"]:checked`);
+
+            if (!selected) {
+                status.textContent = "Wybierz ustawienie.";
+                return;
+            }
+
+            try {
+                const payload = type === "aktywnosc"
+                    ? { action: "settings", aktywnosc: selected.value }
+                    : type === "powiadomienia"
+                        ? { action: "settings", powiadomienia: Number(selected.value) }
+                        : { action: "settings", motyw: Number(selected.value) };
+
+                await saveSettings(payload);
+                savedSettings[type] = type === "aktywnosc" ? selected.value : Number(selected.value);
+                if (type === "motyw") {
+                    localStorage.setItem("komunikator-theme", Number(selected.value) === 1 ? "dark" : "light");
+                    document.documentElement.dataset.theme = Number(selected.value) === 1 ? "dark" : "light";
+                }
+                status.textContent = "Zapisano.";
+            } catch (error) {
+                status.textContent = error.message;
+            }
+        });
+    });
+}
+
+function bindPasswordForm() {
+    const form = document.getElementById("password-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async event => {
+        event.preventDefault();
+        const status = form.querySelector(".settings-status");
+        const oldPassword = form.elements.oldpassword.value;
+        const newPassword = form.elements.newpassword.value;
+        const confirmPassword = form.elements.confirmnewpassword.value;
+
+        if (newPassword !== confirmPassword) {
+            status.textContent = "Nowe hasła nie są zgodne.";
+            return;
+        }
+
+        try {
+            await saveSettings({
+                action: "password",
+                old_password: oldPassword,
+                new_password: newPassword
+            });
+            form.reset();
+            status.textContent = "Zmieniono hasło.";
+        } catch (error) {
+            status.textContent = error.message;
+        }
+    });
 }
