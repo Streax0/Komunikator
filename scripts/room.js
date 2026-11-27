@@ -9,12 +9,37 @@ const roompage = {
 const main = document.querySelector("main");
 
 
-utworzroom = document.getElementById('create-room-btn').addEventListener('click', function() {
+utworzroom = document.getElementById('create-room-btn').addEventListener('click', async function() {
     const roomCode = generateRoomCode();
-    main.innerHTML = roompage['strona'];
-    document.getElementById('room-code').textContent = roomCode;
+    const data = await koddophp(roomCode);
+
+    if (data && data.success) {
+        main.innerHTML = roompage['strona'];
+        document.getElementById('room-code').textContent = data.code;
+    }
     
 });
+
+
+async function koddophp(kod) {
+    try {
+        const response = await fetch('scripts/room.php', {
+            method: 'POST',
+            body: JSON.stringify({ code: kod }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.error || 'Nie udało się zapisać pokoju.');
+        }
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
 
 
 
@@ -26,3 +51,21 @@ function generateRoomCode() {
     crypto.getRandomValues(random);
     return Array.from(random, (byte) => characters[byte % characters.length]).join('');
 }
+
+
+const joinRoomBtn = document.getElementById('join-room-btn');
+const roomCodeInput = document.getElementById('room-code-input');
+const roomStatus = document.getElementById('room-status');
+
+joinRoomBtn.addEventListener('click', async function() {
+    const roomCode = roomCodeInput.value.trim();
+    if (roomCode) {
+        const data = await koddophp(roomCode);
+
+        if (data && data.success) {
+            roomStatus.textContent = 'Dołączono do pokoju.';
+        } else {
+            roomStatus.textContent = 'Nie udało się dołączyć do pokoju.';
+        }
+    }
+});

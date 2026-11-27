@@ -26,6 +26,7 @@ the application interface.
 - Logowanie e-mailem i hasłem; hasła są haszowane przez `password_hash()` i
   sprawdzane przez `password_verify()`.
 - Ochrona głównej strony i ustawień przez sesję oraz wylogowywanie.
+- Tworzenie pokoi i zapisywanie ich kodów w bazie danych.
 - Responsywne widoki logowania i rejestracji.
 - Wstępny interfejs czatu i ustawień — bez działającej obsługi wiadomości.
 
@@ -46,7 +47,7 @@ the application interface.
 
 2. Uruchom Apache i MySQL/MariaDB, np. z panelu XAMPP.
 3. W phpMyAdmin utwórz bazę `message_database`, a następnie zaimportuj
-   [`baza.sql`](baza.sql). Skrypt tworzy tabelę `uzytkownicy`.
+   [`baza.sql`](baza.sql). Skrypt tworzy tabele `uzytkownicy` i `pokoje`.
 4. Umieść katalog projektu w katalogu dokumentów Apache, np.
    `C:\xampp\htdocs\Komunikator`.
 5. Otwórz `http://localhost/Komunikator/`.
@@ -129,6 +130,7 @@ ponownym wykorzystaniem lub dystrybucją projektu.
 - Email-and-password login; passwords are hashed with `password_hash()` and
   checked with `password_verify()`.
 - Session-protected main and settings pages, plus logout.
+- Room creation with room codes saved in the database.
 - Responsive login and registration screens.
 - Early chat and settings interfaces — message handling is not functional yet.
 
@@ -149,7 +151,8 @@ ponownym wykorzystaniem lub dystrybucją projektu.
 
 2. Start Apache and MySQL/MariaDB, for example from the XAMPP Control Panel.
 3. In phpMyAdmin, create a database named `message_database`, then import
-   [`baza.sql`](baza.sql). The script creates the `uzytkownicy` table.
+   [`baza.sql`](baza.sql). The script creates the `uzytkownicy` and `pokoje`
+   tables.
 4. Place the project directory in Apache's document root, for example
    `C:\xampp\htdocs\Komunikator`.
 5. Open `http://localhost/Komunikator/`.

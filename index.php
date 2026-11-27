@@ -8,6 +8,16 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: logowanie.php");
     exit;
 }
+
+$biezace_id = $_SESSION['user_id'];
+
+
+$stmt = $conn->prepare("SELECT imie, nazwisko FROM uzytkownicy WHERE id = ?");
+$stmt->bind_param("i", $biezace_id);
+$stmt->execute();
+
+$wynik = $stmt->get_result()->fetch_assoc();
+$stmt->close();
 ?>
 
 
@@ -67,12 +77,14 @@ if (!isset($_SESSION['user_id'])) {
     <section id="left">
         <div class="chat">
             <a href=""></a>
-            <p id="placeholder">Twoje Ostatnie Chaty</p>
+            <p id="placeholder">Witaj, <?php echo htmlspecialchars($wynik['imie'], ENT_QUOTES, "UTF-8"); ?> <?php echo htmlspecialchars($wynik['nazwisko'], ENT_QUOTES, "UTF-8"); ?>!</p>
         </div>
         <div>
             <button id="create-room-btn">Utwórz Pokój</button>
             <input type="text" id="room-code-input" placeholder="Wprowadź kod pokoju">
             <button id="join-room-btn">Dołącz do Pokoju</button>
+            <p id="room-status"></p>
+        </div>
     </section>
     <main>
 
